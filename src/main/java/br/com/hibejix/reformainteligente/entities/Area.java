@@ -21,8 +21,9 @@ public class Area implements Serializable {
 
     private String nome;
 
-    @OneToMany(mappedBy="idParede")
+    private Float areaTotal;
+
+    @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
     private List<Parede> paredes;
 
-    private Float areaTotal;
 }

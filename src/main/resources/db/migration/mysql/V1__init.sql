@@ -18,8 +18,7 @@ create table `parede` (
   `area_total` float default null,
   `descricao` varchar(255) default null,
   `largura` float default null,
-  `id_area` bigint(20) default null,
+  `area_id` bigint(20) default null,
   primary key (`id_parede`),
-  key `id_area` (`id_area`),
-  constraint `parede_ibfk_1` foreign key (`id_area`) references `area` (`id`)
+  constraint `parede_ibfk_1` foreign key (`area_id`) references `area` (`id`)
 ) engine=innodb;
