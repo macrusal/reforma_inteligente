@@ -1,6 +1,7 @@
 package br.com.hibejix.reformainteligente.resources;
 
 import br.com.hibejix.reformainteligente.entities.Area;
+import br.com.hibejix.reformainteligente.services.AreaService;
 import br.com.hibejix.reformainteligente.services.TintaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +17,33 @@ public class CalculadoraResources {
     @Autowired
     private TintaService tintaService;
 
-    @RequestMapping(value = {"/metros/{metros}"}, method=RequestMethod.GET)
-    public ResponseEntity<Area> calcularLitrosTintaAreaTotal(@PathVariable final Float metros) {
+    @Autowired
+    private AreaService areaService;
 
-        Area area = tintaService.calcularLitrosTintaAreaTotal(metros);
+    @RequestMapping(value = {"/area/{idArea}"}, method=RequestMethod.GET)
+    public ResponseEntity<Area> obterAreaPorId(@PathVariable final Long idArea) {
+
+        Area area = areaService.findAreaById(idArea);
         return ResponseEntity.ok().body(area);
     }
 
-    @RequestMapping(value = {"/altura/largura/{altura}/{largura}"}, method=RequestMethod.GET)
-    public ResponseEntity<?> calcularLitrosTintaAlturaLargura(
-            @PathVariable final Float altura,
-            @PathVariable final Float largura) {
+    @RequestMapping(value = {"/metros/{metros}/area/{idArea}"}, method=RequestMethod.GET)
+    public ResponseEntity<?> calcularLitrosTintaAreaTotal(
+                @PathVariable final Float metros,
+                @PathVariable final Long idArea) {
 
-        Float quantidadeLitros = tintaService.calcularLitrosTintaAlturaLargura(altura, largura);
-        return ResponseEntity.ok().body(quantidadeLitros);
+        Area area = areaService.findAreaById(idArea);
+        Float litrosTinta = area.getAreaTotal() * metros;
+        return ResponseEntity.ok().body(litrosTinta);
+    }
+
+    @RequestMapping(value = {"/altura/{altura}/largura/{largura}/produto/{idProduto}"}, method=RequestMethod.GET)
+    public ResponseEntity<?> calcularAreaPorProduto(
+            @PathVariable final Float altura,
+            @PathVariable final Float largura,
+            @PathVariable final Long idProduto) {
+
+        Float area = tintaService.calcularAreaPorIdProduto(altura, largura, idProduto);
+        return ResponseEntity.ok().body(area);
     }
 }

@@ -25,5 +25,4 @@ public class Area implements Serializable {
 
     @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
     private List<Parede> paredes;
-
 }
