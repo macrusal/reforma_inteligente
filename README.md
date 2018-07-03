@@ -1,4 +1,4 @@
-# API Ð Reforma Inteligente
+# API - Reforma Inteligente
 
 - Git
 - Spring Boot
@@ -9,3 +9,8 @@
 - Swagger
 - Lombok
 
+Endpoint
+	/hibejix-reforma/calculadora/
+
+Swagger
+	http://localhost:8087/swagger-ui.html
