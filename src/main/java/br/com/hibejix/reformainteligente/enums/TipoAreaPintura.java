@@ -1,4 +1,4 @@
-package br.com.hibejix.reformainteligente.entities.enums;
+package br.com.hibejix.reformainteligente.enums;
 
 public enum TipoAreaPintura {
 

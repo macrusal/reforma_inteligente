@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.hibejix.reformainteligente.entities.config;
+package br.com.hibejix.reformainteligente.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
