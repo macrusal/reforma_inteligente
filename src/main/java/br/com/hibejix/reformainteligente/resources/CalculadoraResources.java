@@ -1,6 +1,7 @@
 package br.com.hibejix.reformainteligente.resources;
 
 import br.com.hibejix.reformainteligente.entities.Area;
+import br.com.hibejix.reformainteligente.entities.Produto;
 import br.com.hibejix.reformainteligente.services.AreaService;
 import br.com.hibejix.reformainteligente.services.TintaService;
 import io.swagger.annotations.Api;
@@ -32,14 +33,16 @@ public class CalculadoraResources {
     }
 
     @ApiOperation(value="Retorna a quantidade de litros de tinta necessarios para pintar uma Area")
-    @RequestMapping(value = {"/metros/{metros}/area/{idArea}"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/produto/{idProduto}/area/{idArea}"}, method=RequestMethod.GET)
     public ResponseEntity<?> calcularLitrosTintaAreaTotal(
-                @PathVariable final Float metros,
+                @PathVariable final Long idProduto,
                 @PathVariable final Long idArea) {
 
         Area area = areaService.findAreaById(idArea);
-        Float litrosTinta = area.getAreaTotal() * metros;
-        return ResponseEntity.ok().body(litrosTinta);
+        Produto produto = tintaService.findProdutoById(idProduto);
+        Float litrosTinta = area.getAreaTotal() / produto.getLitros();
+        area.setLitrosTinta(litrosTinta);
+        return ResponseEntity.ok().body(area);
     }
 
     @ApiOperation(value="Retorna a Area com as informações dos litros de tinta de acordo com o produto escolhido")

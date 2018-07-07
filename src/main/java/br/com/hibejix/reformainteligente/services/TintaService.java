@@ -14,6 +14,12 @@ public class TintaService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+    public Produto findProdutoById(final Long idProduto) {
+        Optional<Produto> produto = produtoRepository.findById(idProduto);
+        return produto.orElseThrow(() -> new ProdutoNotFoundException(
+                "Produto não encontrado! Id: " + idProduto + ", Tipo: " + Produto.class.getName()));
+    }
+
     public Float calcularAreaPorIdProduto(final Float altura, final Float largura, final Long idProduto) {
         Optional<Produto> produto = produtoRepository.findById(idProduto);
         Float litrosTintaLata = (altura * largura) / produto.orElseThrow(() -> new ProdutoNotFoundException(
@@ -21,6 +27,5 @@ public class TintaService {
         ).getLitros();
         return litrosTintaLata;
     }
-
 
 }

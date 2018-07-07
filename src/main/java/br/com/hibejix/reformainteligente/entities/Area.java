@@ -25,6 +25,9 @@ public class Area implements Serializable {
 
     private Float areaTotal;
 
+    @Transient
+    private Float litrosTinta;
+
     @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
     private List<Parede> paredes;
 

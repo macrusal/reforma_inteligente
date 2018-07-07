@@ -1,6 +1,7 @@
 package br.com.hibejix.reformainteligente.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(name = "PAREDE")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Parede implements Serializable {
 
     private static final long serialVersionUID = 1L;
