@@ -15,7 +15,6 @@ create table `area` (
 create table `parede` (
   `id_parede` bigint(20) not null auto_increment,
   `altura` float default null,
-  `area_total` float default null,
   `descricao` varchar(255) default null,
   `largura` float default null,
   `area_id` bigint(20) default null,

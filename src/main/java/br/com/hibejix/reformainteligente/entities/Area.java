@@ -1,5 +1,6 @@
 package br.com.hibejix.reformainteligente.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "AREA")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Area implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,4 +27,5 @@ public class Area implements Serializable {
 
     @OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
     private List<Parede> paredes;
+
 }

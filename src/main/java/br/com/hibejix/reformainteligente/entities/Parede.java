@@ -30,9 +30,14 @@ public class Parede implements Serializable {
 
     private Float largura;
 
+    @Transient
     private Float areaTotal;
 
     @JsonIgnore
     @ManyToOne
     private Area area;
+
+    public Float getAreTotal() {
+        return altura * largura;
+    }
 }
