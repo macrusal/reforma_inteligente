@@ -32,12 +32,13 @@ Prova de conceito utilizando Spring Boot com servidor embarcado Tomcat, banco de
 4 - Criar o banco de dados que estiver referenciado no application.properties
 
 5 - Acessar linha de comando no banco de dados executando no Container:
-a. sudo docker exec -it mysql bash -l
-b. mysql --user=root --password=root
-c. SELECT User,authentication_string FROM mysql.user;
-d. DROP USER 'marcelo'@'%';
-e. CREATE USER 'marcelo'@'%' IDENTIFIED WITH mysql_native_password BY '';
-f. GRANT ALL PRIVILEGES ON reforma_inteligente.* TO 'marcelo'@'%' identified by '';
+
+	a. sudo docker exec -it mysql bash -l
+	b. mysql --user=root --password=root
+	c. SELECT User,authentication_string FROM mysql.user;
+	d. DROP USER 'marcelo'@'%';
+	e. CREATE USER 'marcelo'@'%' IDENTIFIED WITH mysql_native_password BY '';
+	f. GRANT ALL PRIVILEGES ON reforma_inteligente.* TO 'marcelo'@'%' identified by '';
 
 6 - Subir a aplicacao
 
